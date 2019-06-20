@@ -547,72 +547,23 @@
                             </a>
                             <div class="triangle-topright"></div>                       
                         </div>
-                        
-                            <div class="am-u-sm-7 am-u-md-4 text-two sug">
-                                <div class="outer-con ">
-                                    <div class="title ">
-                                        雪之恋和风大福
-                                    </div>                                  
-                                    <div class="sub-title ">
-                                        ¥13.8
-                                    </div>
-                                    <i class="am-icon-shopping-basket am-icon-md  seprate"></i>
-                                </div>
-                                <a href="# "><img src="static/images/2.jpg" /></a>
-                            </div>
-
-                            <div class="am-u-sm-7 am-u-md-4 text-two">
-                                <div class="outer-con ">
-                                    <div class="title ">
-                                        雪之恋和风大福
-                                    </div>
-                                    <div class="sub-title ">
-                                        ¥13.8
-                                    </div>
-                                    <i class="am-icon-shopping-basket am-icon-md  seprate"></i>
-                                </div>
-                                <a href="# "><img src="static/images/1.jpg" /></a>
-                            </div>
-
-
+                        @foreach($data1 as $item)
                         <div class="am-u-sm-3 am-u-md-2 text-three big">
                             <div class="outer-con ">
                                 <div class="title ">
-                                    小优布丁
+                                    {{$item['good_name']}}
                                 </div>
                                 <div class="sub-title ">
-                                    ¥4.8
+                                    ¥{{$item['good_price']}}
                                 </div>
-                                <i class="am-icon-shopping-basket am-icon-md  seprate"></i>
+                                <!-- 加入购物车 -->
+                                <a href="#">
+                                    <i class="am-icon-shopping-basket am-icon-md  seprate"></i>
+                                </a>
                             </div>
-                            <a href="# "><img src="static/images/5.jpg" /></a>
+                            <a href="aa/{{$item['id']}}"><img src="static/images/5.jpg" /></a>
                         </div>
-
-                        <div class="am-u-sm-3 am-u-md-2 text-three sug">
-                            <div class="outer-con ">
-                                <div class="title ">
-                                    小优布丁
-                                </div>
-                                <div class="sub-title ">
-                                    ¥4.8
-                                </div>
-                                <i class="am-icon-shopping-basket am-icon-md  seprate"></i>
-                            </div>
-                            <a href="# "><img src="static/images/3.jpg" /></a>
-                        </div>
-
-                        <div class="am-u-sm-3 am-u-md-2 text-three ">
-                            <div class="outer-con ">
-                                <div class="title ">
-                                    小优布丁
-                                </div>
-                                <div class="sub-title ">
-                                    ¥4.8
-                                </div>
-                                <i class="am-icon-shopping-basket am-icon-md  seprate"></i>
-                            </div>
-                            <a href="# "><img src="static/images/4.jpg" /></a>
-                        </div>
+                        @endforeach
 
                         <div class="am-u-sm-3 am-u-md-2 text-three last big ">
                             <div class="outer-con ">
@@ -671,35 +622,7 @@
                             </a>
                             <div class="triangle-topright"></div>   
                         </div>
-                        <div class="am-u-sm-4 text-four">
-                            <a href="# ">
-                                <img src="static/images/6.jpg" />
-                                <div class="outer-con ">
-                                    <div class="title ">
-                                        雪之恋和风大福
-                                    </div>                              
-                                    <div class="sub-title ">
-                                        ¥13.8
-                                    </div>
-                                    <i class="am-icon-shopping-basket am-icon-md  seprate"></i>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="am-u-sm-4 text-four sug">
-                            <a href="# ">
-                                <img src="static/images/7.jpg" />
-                                <div class="outer-con ">
-                                    <div class="title ">
-                                        雪之恋和风大福
-                                    </div>
-                                    <div class="sub-title ">
-                                        ¥13.8
-                                    </div>
-                                    <i class="am-icon-shopping-basket am-icon-md  seprate"></i>
-                                </div>
-                            </a>
-                        </div>
-                        
+                        @foreach($data2 as $item)
                         <div class="am-u-sm-6 am-u-md-3 text-five big ">
                             <a href="# ">
                                 <img src="static/images/10.jpg" />
@@ -713,7 +636,8 @@
                                     <i class="am-icon-shopping-basket am-icon-md  seprate"></i>
                                 </div>
                             </a>
-                        </div>                      
+                        </div>  
+                        @endforeach                    
                         <div class="am-u-sm-6 am-u-md-3 text-five ">
                             <a href="# ">
                                 <img src="static/images/8.jpg" />
@@ -808,71 +732,21 @@
                             <div class="triangle-topright"></div>                       
                         </div>
                         
-                            <div class="am-u-sm-7 am-u-md-4 text-two sug">
-                                <div class="outer-con ">
-                                    <div class="title ">
-                                        雪之恋和风大福
-                                    </div>                                  
-                                    <div class="sub-title ">
-                                        ¥13.8
-                                    </div>
-                                    <i class="am-icon-shopping-basket am-icon-md  seprate"></i>
-                                </div>
-                                <a href="# "><img src="static/images/2.jpg" /></a>
-                            </div>
-
-                            <div class="am-u-sm-7 am-u-md-4 text-two">
-                                <div class="outer-con ">
-                                    <div class="title ">
-                                        雪之恋和风大福
-                                    </div>
-                                    <div class="sub-title ">
-                                        ¥13.8
-                                    </div>
-                                    <i class="am-icon-shopping-basket am-icon-md  seprate"></i>
-                                </div>
-                                <a href="# "><img src="static/images/1.jpg" /></a>
-                            </div>
-
-
+                        @foreach($data3 as $item)
                         <div class="am-u-sm-3 am-u-md-2 text-three big">
                             <div class="outer-con ">
                                 <div class="title ">
-                                    小优布丁
+                                    {{$item['good_name']}}
                                 </div>
                                 <div class="sub-title ">
-                                    ¥4.8
+                                    ¥{{$item['good_price']}}
                                 </div>
                                 <i class="am-icon-shopping-basket am-icon-md  seprate"></i>
                             </div>
                             <a href="# "><img src="static/images/5.jpg" /></a>
                         </div>
+                        @endforeach
 
-                        <div class="am-u-sm-3 am-u-md-2 text-three sug">
-                            <div class="outer-con ">
-                                <div class="title ">
-                                    小优布丁
-                                </div>
-                                <div class="sub-title ">
-                                    ¥4.8
-                                </div>
-                                <i class="am-icon-shopping-basket am-icon-md  seprate"></i>
-                            </div>
-                            <a href="# "><img src="static/images/3.jpg" /></a>
-                        </div>
-
-                        <div class="am-u-sm-3 am-u-md-2 text-three ">
-                            <div class="outer-con ">
-                                <div class="title ">
-                                    小优布丁
-                                </div>
-                                <div class="sub-title ">
-                                    ¥4.8
-                                </div>
-                                <i class="am-icon-shopping-basket am-icon-md  seprate"></i>
-                            </div>
-                            <a href="# "><img src="static/images/4.jpg" /></a>
-                        </div>
 
                         <div class="am-u-sm-3 am-u-md-2 text-three last big ">
                             <div class="outer-con ">
@@ -931,35 +805,8 @@
                             </a>
                             <div class="triangle-topright"></div>   
                         </div>
-                        <div class="am-u-sm-4 text-four">
-                            <a href="# ">
-                                <img src="static/images/6.jpg" />
-                                <div class="outer-con ">
-                                    <div class="title ">
-                                        雪之恋和风大福
-                                    </div>                              
-                                    <div class="sub-title ">
-                                        ¥13.8
-                                    </div>
-                                    <i class="am-icon-shopping-basket am-icon-md  seprate"></i>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="am-u-sm-4 text-four sug">
-                            <a href="# ">
-                                <img src="static/images/7.jpg" />
-                                <div class="outer-con ">
-                                    <div class="title ">
-                                        雪之恋和风大福
-                                    </div>
-                                    <div class="sub-title ">
-                                        ¥13.8
-                                    </div>
-                                    <i class="am-icon-shopping-basket am-icon-md  seprate"></i>
-                                </div>
-                            </a>
-                        </div>
                         
+                        @foreach($data4 as $item)
                         <div class="am-u-sm-6 am-u-md-3 text-five big ">
                             <a href="# ">
                                 <img src="static/images/10.jpg" />
@@ -973,35 +820,9 @@
                                     <i class="am-icon-shopping-basket am-icon-md  seprate"></i>
                                 </div>
                             </a>
-                        </div>                      
-                        <div class="am-u-sm-6 am-u-md-3 text-five ">
-                            <a href="# ">
-                                <img src="static/images/8.jpg" />
-                                <div class="outer-con ">
-                                    <div class="title ">
-                                        雪之恋和风大福
-                                    </div>  
-                                    <div class="sub-title ">
-                                        ¥13.8
-                                    </div>
-                                    <i class="am-icon-shopping-basket am-icon-md  seprate"></i>
-                                </div>
-                            </a>
-                        </div>                      
-                        <div class="am-u-sm-6 am-u-md-3 text-five sug">
-                            <a href="# ">
-                                <img src="static/images/9.jpg" />
-                                <div class="outer-con ">
-                                    <div class="title ">
-                                        雪之恋和风大福
-                                    </div>
-                                    <div class="sub-title ">
-                                        ¥13.8
-                                    </div>
-                                    <i class="am-icon-shopping-basket am-icon-md  seprate"></i>
-                                </div>
-                            </a>
-                        </div>
+                        </div>  
+                        @endforeach                      
+                        
                         <div class="am-u-sm-6 am-u-md-3 text-five big">
                             <a href="# ">
                                 <img src="static/images/10.jpg" />
@@ -1817,11 +1638,11 @@
                         </div>
                         <div class="footer-bd ">
                             <p>
-                                <a href="# ">关于恒望</a>
+                                <a href="# ">关于某某</a>
                                 <a href="# ">合作伙伴</a>
                                 <a href="# ">联系我们</a>
                                 <a href="# ">网站地图</a>
-                                <em>© 2015-2025 Hengwang.com 版权所有. 更多模板 <a href="http://www.cssmoban.com/" target="_blank" title="模板之家">模板之家</a> - Collect from <a href="http://www.cssmoban.com/" title="网页模板" target="_blank">网页模板</a></em>
+                                <em>© 2015-2025 Hengwang.com 版权所有. 更多详情 <a href="http://www.cssmoban.com/" target="_blank" title="商城之家">商城之家</a> - Collect from <a href="http://www.cssmoban.com/" title="网页模板" target="_blank">商城之家</a></em>
                             </p>
                         </div>
                     </div>
