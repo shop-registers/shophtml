@@ -33,6 +33,18 @@ return [
 
     'connections' => [
 
+        'mongodb' => array(         //MongoDB
+            'driver'   => 'mongodb',
+            'host'     => '47.101.44.77',  //数据库服务器的ip
+            'port'     => 27017,            //数据库服务器上mongodb服务对应的端口
+            'database' => 'shop',  //数据库名称
+            'username' => 'root',
+            'password' => '123456',
+            'options' => array(
+                'database' => 'shop' // 要使用的数据库
+            )
+         
+        ),
         'sqlite' => [
             'driver' => 'sqlite',
             'database' => env('DB_DATABASE', database_path('database.sqlite')),
