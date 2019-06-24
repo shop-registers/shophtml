@@ -12,3 +12,7 @@
 */
 
 Route::get('/', 'IndexController@index');
+//首页
+Route::get('/PersonalCenter', 'PersonalCenterController@PersonalCenter');
+//个人资料
+Route::get('/PersonalData', 'PersonalCenterController@PersonalData');
