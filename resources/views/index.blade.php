@@ -470,7 +470,7 @@
                                 t = setInterval(tim,1000);
                                 function tim(){
                                     var time = new Date();
-                                    var newtime = new Date('2019-6-23');
+                                    var newtime = new Date('2019-6-29');
                                     var difftime = newtime - time;
                                     if(difftime > 0){
                                         difftime = difftime/1000;

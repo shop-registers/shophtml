@@ -7,15 +7,15 @@
 
 		<title>搜索页面</title>
 
-		<link href="static/AmazeUI-2.4.2/assets/css/amazeui.css" rel="stylesheet" type="text/css" />
-		<link href="static/AmazeUI-2.4.2/assets/css/admin.css" rel="stylesheet" type="text/css" />
+		<link href="../static/AmazeUI-2.4.2/assets/css/amazeui.css" rel="stylesheet" type="text/css" />
+		<link href="../static/AmazeUI-2.4.2/assets/css/admin.css" rel="stylesheet" type="text/css" />
 
-		<link href="static/basic/css/demo.css" rel="stylesheet" type="text/css" />
+		<link href="../static/basic/css/demo.css" rel="stylesheet" type="text/css" />
 
-		<link href="static/css/seastyle.css" rel="stylesheet" type="text/css" />
+		<link href="../static/css/seastyle.css" rel="stylesheet" type="text/css" />
 
-		<script type="text/javascript" src="static/basic/js/jquery-1.7.min.js"></script>
-		<script type="text/javascript" src="static/js/script.js"></script>
+		<script type="text/javascript" src="../static/basic/js/jquery-1.7.min.js"></script>
+		<script type="text/javascript" src="../static/js/script.js"></script>
 	</head>
 
 	<body>
@@ -48,9 +48,9 @@
 			<!--悬浮搜索框-->
 
 			<div class="nav white">
-				<div class="logo"><img src="static/images/logo.png" /></div>
+				<div class="logo"><img src="../static/images/logo.png" /></div>
 				<div class="logoBig">
-					<li><img src="static/images/logobig.png" /></li>
+					<li><img src="../static/images/logobig.png" /></li>
 				</div>
 
 				<div class="search-bar pr">
@@ -64,7 +64,7 @@
 
 			<div class="clear"></div>
 			<b class="line"></b>
-           <div class="search">
+           	<div class="search">
 			<div class="search-list">
 			<div class="nav-table">
 					   <div class="long-title"><span class="all-goods">全部分类</span></div>
