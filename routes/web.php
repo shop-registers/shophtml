@@ -17,3 +17,6 @@ Route::get('/asdf',function(){
 	return view('asdf');
 });
 Route::get('/pay','IndexController@good_pay');
+Route::get('/success',function(){
+	return view('success');
+});

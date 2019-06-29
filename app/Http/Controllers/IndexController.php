@@ -33,12 +33,9 @@ class IndexController extends Controller
     }
     public function good_pay(Request $request){
     	$code=$request->input('code');
-    	$user_id=$request->session()->get('user_id');
-    	$codearr=explode(',',$code);
-    	foreach($codearr as $k=>$v){
-    		$res[]=Order_master::where('order_sn',$v)->select('')->get()->toArray();
-    	}
-    	$address=Address::where('u_id',$user_id)->get();
-    	return view('pay'.['orderinfo'=>$res,'address'=>$address]);
+    	$url="http://localhost/cffirm/show_qian/public/api/payorder?code=".$code;
+    	$data=file_get_contents($url);
+    	$data=json_decode($data,true);
+    	return view('pay',['data'=>$data['data']]);
     }
 }
