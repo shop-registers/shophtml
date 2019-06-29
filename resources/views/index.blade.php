@@ -465,7 +465,7 @@
                         </div>
                         <!-- 秒杀倒计时 start-->
                         <script type="text/javascript">
-                            $(document).ready(function(){
+                            /*$(document).ready(function(){
                                 var t = '';
                                 t = setInterval(tim,1000);
                                 function tim(){
@@ -483,7 +483,7 @@
                                     }
                                     
                                 }
-                            })
+                            })*/
                         </script>
                         <!-- 秒杀倒计时 end-->
                         <div class="am-u-sm-3 ">
