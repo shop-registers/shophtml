@@ -12,3 +12,8 @@
 */
 
 Route::get('/', 'IndexController@index');
+// Route::get('/',function(){
+// 	return view('header');
+// });
+Route::get('/index', 'IndexController@index');
+Route::get('/spike/{id?}', 'IndexController@spike');
