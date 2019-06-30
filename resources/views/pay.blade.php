@@ -337,7 +337,6 @@
 										chile_order_sn.push($(this).attr('asdf'));
 									})
 									chile_order_sn=chile_order_sn.join(',');
-									console.log(chile_order_sn);
 									var pay_list=$('.pay-list').children('.selected').text();
 									if(pay_list==""){
 										showToast({
@@ -354,7 +353,7 @@
 									var shipping_tel=$('.buy-phone').html();
 									var address=$('#address').text();
 									var order_num=$('#num').val();
-									var price=$('.J_ActualFee').text();
+									var price=$('#J_ActualFee').html();
 									var total_price=$('#total_price').text();
 									$.ajax({
 										url:"http://localhost/cffirm/show_qian/public/api/payment_success",
@@ -372,7 +371,8 @@
 										},
 										dataType:"json",
 										type:"post",
-										succss:function(res){
+										success:function(res){
+											console.log(res);
 											if(res.code==40015){
 												showToast({
 												   title:"提交成功！",
@@ -380,7 +380,18 @@
 												   duration:3000,
 												   mask:true,
 												   success:function (res) {
-												       location.href="../success";
+												       
+												   }
+												});
+												location.href="success?code="+res.data;
+											}else if(res.code==40017){
+												showToast({
+												   title:"订单已提交，请勿重复提交！",
+												   icon:'success',
+												   duration:3000,
+												   mask:true,
+												   success:function (res) {
+												       
 												   }
 												});
 											}

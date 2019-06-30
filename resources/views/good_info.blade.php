@@ -281,7 +281,7 @@
 												<div class="theme-signin-left">
 													@foreach($attrinfo as $item)
 													<div class="theme-options" id="{{$item['attr_name']}}">
-														<div class="cart-title">{{$item['attr_name']}}</div>
+														<div class="cart-title asdf" asdf="{{$item['attr_name']}}">{{$item['attr_name']}}</div>
 														<ul>
 															@foreach($item['attr_desc'] as $v)
 															<li class="sku-line" v-model="sku_desc" ref="skudesc" value="{{$v}}">{{$v}}<i></i></li>
@@ -363,7 +363,19 @@
 					<script type="text/javascript">
 						$(document).on('click','#LikBasket',function(){
 							var good_id=$('#good_id').val();
-							console.log(good_id);
+							var attr_value=[];
+							var attr_name=[];
+							var arr=[];
+							$('.selected').each(function(){
+								attr_value.push($(this).val());
+							})
+							$('.asdf').each(function(){
+								attr_name.push($(this).attr('asdf'));
+							})
+							for (var i = 0; i <= attr_name.length-1; i++) {
+								arr[i]=attr_name[i]+":"+attr_value[i];
+							}
+							arr=arr.join(' ');
 							var good_name=$('#good_name').text();
 							var sku_code=$('#sku_code').val();
 							var good_price=$('#good_price').text();
@@ -375,6 +387,7 @@
 									'good_id':good_id,
 									'good_name':good_name,
 									'sku_code':sku_code,
+									'sku_desc':arr,
 									'good_price':good_price,
 									'text_box':text_box
 								},
