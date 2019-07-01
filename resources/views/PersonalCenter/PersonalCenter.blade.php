@@ -387,7 +387,7 @@
 
 											<div class="s-pic">
 												<a href="#" class="s-pic-link">
-													<img src="../static/images/-0-saturn_solar.jpg_220x220.jpg" alt="4折抢购!十二生肖925银女戒指,时尚开口女戒" title="4折抢购!十二生肖925银女戒指,时尚开口女戒" class="s-pic-img s-guess-item-img">
+													<img src="../images/-0-saturn_solar.jpg_220x220.jpg" alt="4折抢购!十二生肖925银女戒指,时尚开口女戒" title="4折抢购!十二生肖925银女戒指,时尚开口女戒" class="s-pic-img s-guess-item-img">
 												</a>
 											</div>
 											<div class="s-price-box">
@@ -499,13 +499,13 @@
 						<ul>
 							<li> <a href="PersonalData">个人信息</a></li>
 							<li> <a href="safety.html">安全设置</a></li>
-							<li> <a href="address.html">收货地址</a></li>
+							<li> <a href="PersonalAddress">收货地址</a></li>
 						</ul>
 					</li>
 					<li class="person">
 						<a href="#">我的交易</a>
 						<ul>
-							<li><a href="order.html">订单管理</a></li>
+							<li><a href="PersonalOrder">订单管理</a></li>
 							<li> <a href="change.html">退款售后</a></li>
 						</ul>
 					</li>

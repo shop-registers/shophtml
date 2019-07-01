@@ -16,3 +16,7 @@ Route::get('/', 'IndexController@index');
 Route::get('/PersonalCenter', 'PersonalCenterController@PersonalCenter');
 //个人资料
 Route::get('/PersonalData', 'PersonalCenterController@PersonalData');
+//全部订单管理
+Route::get('/PersonalOrder', 'PersonalCenterController@PersonalOrder');
+//收货地址
+Route::any('/PersonalAddress','PersonalCenterController@PersonalAddress');

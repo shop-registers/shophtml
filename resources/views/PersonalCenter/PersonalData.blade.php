@@ -267,13 +267,13 @@
 						<ul>
 							<li class="active"> <a href="information.html">个人信息</a></li>
 							<li> <a href="safety.html">安全设置</a></li>
-							<li> <a href="address.html">收货地址</a></li>
+							<li> <a href="PersonalAddress">收货地址</a></li>
 						</ul>
 					</li>
 					<li class="person">
 						<a href="#">我的交易</a>
 						<ul>
-							<li><a href="order.html">订单管理</a></li>
+							<li><a href="PersonalOrder">订单管理</a></li>
 							<li> <a href="change.html">退款售后</a></li>
 						</ul>
 					</li>
