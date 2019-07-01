@@ -12,22 +12,22 @@
 
 		<meta name="csrf-token" content="{{ csrf_token() }}">
 
-		<link rel="stylesheet" href="/cheng_js/AmazeUI-2.4.2/assets/css/amazeui.min.css" />
-		<link href="/cheng_js/css/dlstyle.css" rel="stylesheet" type="text/css">
-		<script src="/cheng_js/AmazeUI-2.4.2/assets/js/jquery.min.js"></script>
-		<script src="/cheng_js/AmazeUI-2.4.2/assets/js/amazeui.min.js"></script>
+		<link rel="stylesheet" href="cheng_js/AmazeUI-2.4.2/assets/css/amazeui.min.css" />
+		<link href="cheng_js/css/dlstyle.css" rel="stylesheet" type="text/css">
+		<script src="cheng_js/AmazeUI-2.4.2/assets/js/jquery.min.js"></script>
+		<script src="cheng_js/AmazeUI-2.4.2/assets/js/amazeui.min.js"></script>
 
 	</head>
 
 	<body>
 
 		<div class="login-boxtitle">
-			<a href="home/demo.html"><img alt="" src="/cheng_js/images/logobig.png" /></a>
+			<a href="home/demo.html"><img alt="" src="cheng_js/images/logobig.png" /></a>
 		</div>
 
 		<div class="res-banner">
 			<div class="res-main">
-				<div class="login-banner-bg"><span></span><img src="/cheng_js/images/big.jpg" /></div>
+				<div class="login-banner-bg"><span></span><img src="cheng_js/images/big.jpg" /></div>
 				<div class="login-box">
 
 						<div class="am-tabs" id="doc-my-tabs">
@@ -38,7 +38,7 @@
 
 							<div class="am-tabs-bd">
 								<div class="am-tab-panel am-active">
-									<form  action="\register" method="post">
+									<form  action="register" method="post">
 
 							 <div class="user-email">
 										<label for="email"><i class="am-icon-code-fork"></i></label>
@@ -69,7 +69,7 @@
 										<div class="am-cf">
 											<input type="submit" value="注册" class="am-btn am-btn-primary am-btn-sm am-fl sub">
 											<br><br><br>
-											<a href="/login"><input type="submit" value="登录" class="am-btn am-btn-primary am-btn-sm am-fl"></a>
+											<a href="login"><input type="submit" value="登录" class="am-btn am-btn-primary am-btn-sm am-fl"></a>
 											
 										</div>
 
@@ -115,7 +115,7 @@
 	</body>
 
 </html>
-  <script src="/layer/layer.js"></script>
+  <script src="layer/layer.js"></script>
 <script type="text/javascript"></script>
 <script>
 	$(document).on("click",".sub",function(){
@@ -132,7 +132,7 @@
 		}
 		//发送post请求 
 		$.ajax({
-			url:"/add_register",
+			url:"add_register",
 			type:"post",
 			data:{name:name,email:email,pwd:pwd,pwd_cc:pwd_cc},
 			headers: {

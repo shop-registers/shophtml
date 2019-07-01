@@ -50,8 +50,8 @@
             
             <div class="login-links">
                 <label for="remember-me"><input id="remember-me" type="checkbox">记住密码</label>
-								<a href="/zhao_mi" class="am-fr">忘记密码</a>
-								<a href="/register" class="zcnext am-fr am-btn-default">注册</a>
+								<a href="zhao_mi" class="am-fr">忘记密码</a>
+								<a href="register" class="zcnext am-fr am-btn-default">注册</a>
 								<br />
             </div>
 								<div class="am-cf">
@@ -116,7 +116,7 @@
 					var name = $("[name = 'name']").val();
 					var pwd = $("[name = 'pwd']").val();
 					$.ajax({
-						url:"/logins",
+						url:"logins",
 						type:"post",
 						data:{name:name,pwd:pwd},
 						headers: {
@@ -158,7 +158,7 @@
 								var user_id = arr.data.user_id;
 								var token = arr.data.token;
 								$.ajax({
-									url:"/loginn",
+									url:"loginn",
 									type:"post",
 									data:{user_id:user_id,token:token},
 									headers: {
