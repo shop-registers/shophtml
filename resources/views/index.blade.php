@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 
@@ -27,7 +26,7 @@
                 <ul class="message-l">
                     <div class="topMessage">
                         <div class="menu-hd">
-                            <a href="#" target="_top" class="h">亲，请登录</a>
+                            <a href="login" target="_top" class="h">亲，请登录</a>
                             <a href="#" target="_top">免费注册</a>
                         </div>
                     </div>
@@ -705,7 +704,7 @@
                                 </em>
                             </div>
                             <div class="member-logout">
-                                <a class="am-btn-warning btn" href="login.html">登录</a>
+                                <a class="am-btn-warning btn" href="login">登录</a>
                                 <a class="am-btn-warning btn" href="register.html">注册</a>
                             </div>
                             <div class="member-login">

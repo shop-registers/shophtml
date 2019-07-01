@@ -12,23 +12,23 @@
 
 		<meta name="csrf-token" content="{{ csrf_token() }}">
 
-		<link rel="stylesheet" href="/cheng_js/layui/layui/css/layui.css">
+		<link rel="stylesheet" href="cheng_js/layui/layui/css/layui.css">
 
 		<script src="https://ssl.captcha.qq.com/TCaptcha.js"></script>
 
-		<link rel="stylesheet" href="/cheng_js/AmazeUI-2.4.2/assets/css/amazeui.css" />
-		<link href="/cheng_js/css/dlstyle.css" rel="stylesheet" type="text/css">
+		<link rel="stylesheet" href="cheng_js/AmazeUI-2.4.2/assets/css/amazeui.css" />
+		<link href="cheng_js/css/dlstyle.css" rel="stylesheet" type="text/css">
 	</head>
 
 	<body>
 
 		<div class="login-boxtitle">
-			<a href="home.html"><img alt="logo" src="/cheng_js/images/logobig.png" /></a>
+			<a href="home.html"><img alt="logo" src="cheng_js/images/logobig.png" /></a>
 		</div>
 
 		<div class="login-banner">
 			<div class="login-main">
-				<div class="login-banner-bg"><span></span><img src="/cheng_js/images/big.jpg" /></div>
+				<div class="login-banner-bg"><span></span><img src="cheng_js/images/big.jpg" /></div>
 				<div class="login-box">
 
 							<h3 class="title">登录商城</h3>
@@ -99,8 +99,8 @@
 	</body>
 
 </html>
-<script src="/cheng_js/jquery.js"></script>
-<script src="/layer/layer.js"></script>
+<script src="cheng_js/jquery.js"></script>
+<script src="layer/layer.js"></script>
 <script type="text/javascript">
 	
 	
@@ -172,9 +172,6 @@
 						        	}
 								})
 			        		}
-
-
-
 
 			        	}
 					})
