@@ -53,4 +53,6 @@ class IndexController extends Controller
     {
         return view('spike');
     }
+
+
 }
