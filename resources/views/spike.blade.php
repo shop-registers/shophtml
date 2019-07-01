@@ -78,8 +78,8 @@
 				<div class="clear"></div>
 
 				<ul class="am-avg-sm-2 am-avg-md-3 am-avg-lg-4 boxes">
-					@{{ info }}
 					<li v-for='value in info.data'>
+						<a :href="'../good_info/'+value.id">
 						<div class="i-pic limit">
 							<img src="../static/images/imgsearch1.jpg" />											
 							<p class="title fl">@{{ value.type_name }}</p>
@@ -91,6 +91,7 @@
 								销量<span>1110</span>
 							</p>
 						</div>
+						</a>
 					</li>
 				</ul>
 			</div>
@@ -156,6 +157,7 @@
 		</div>
 	</div>
 	<!-- 分类商品 -->
+	<script src="https://unpkg.com/vue-router/dist/vue-router.js"></script>
 	<script src="https://cdn.staticfile.org/axios/0.18.0/axios.min.js"></script>
 	<script type="text/javascript" src="{{asset('js/vue.min.js')}}"></script>
 	<script type="text/javascript">

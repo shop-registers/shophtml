@@ -923,7 +923,7 @@
                                     <i class="am-icon-shopping-basket am-icon-md  seprate"></i>
                                 </a>
                             </div>
-                            <a href="aa/{{$item['id']}}"><img src="static/images/5.jpg" /></a>
+                            <a href="good_info/{{$item['id']}}"><img src="static/images/5.jpg" /></a>
                         </div>
                         @endforeach
 
