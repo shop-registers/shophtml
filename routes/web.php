@@ -13,8 +13,5 @@
 
 Route::get('/', 'IndexController@index');
 Route::get("/good_info/{id}",'IndexController@good_info');
-Route::get('/asdf',function(){
-	return view('asdf');
-});
 Route::get('/pay','IndexController@good_pay');
 Route::get('/success','IndexController@success_pay');
