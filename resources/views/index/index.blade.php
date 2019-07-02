@@ -39,12 +39,77 @@
                         <div class="menu-hd MyShangcheng"><a href="#" target="_top"><i class="am-icon-user am-icon-fw"></i>个人中心</a></div>
                     </div>
                     <div class="topMessage mini-cart">
-                        <div class="menu-hd"><a id="mc-menu-hd" href="#" target="_top"><i class="am-icon-shopping-cart  am-icon-fw"></i><span>购物车</span><strong id="J_MiniCartNum" class="h">0</strong></a></div>
+                        <div class="menu-hd shop_car">
+                            <a id="mc-menu-hd" href="#" target="_top">
+                            <i class="am-icon-shopping-cart  am-icon-fw"></i>
+                            <span>购物车</span>
+                            <strong id="J_MiniCartNum" class="h"></strong>
+                            </a>
+                        </div>
                     </div>
                     <div class="topMessage favorite">
                         <div class="menu-hd"><a href="#" target="_top"><i class="am-icon-heart am-icon-fw"></i><span>收藏夹</span></a></div>
                 </ul>
                 </div>
+
+                
+                <script src="text/javascript"></script>
+                <script>
+                //收藏夹
+                $(".favorite").click(function(){
+                    $.ajax({ 
+                            url: "{{ url('check_user') }}" , 
+                            type: 'POST',
+                            data: { _token : '<?php echo csrf_token()?>'},
+                            dataType: 'json', 
+                            success: function(data){ 
+                                // console.log(data);
+                                if(data.code==0)
+                                {
+                                   alert("请先登录");
+                                   // window.location.href = "http://www.jb51.net";
+                                }
+                                //跳转购物车列表
+                                 if(data.code==1)
+                                 {
+                                    var url = "collection_list";//此处拼接内容
+                                    window.location.href = url;
+                                 }
+                            }, 
+                            error: function(xhr, type){ 
+                                alert('Ajax error!') 
+                            } 
+                        });
+                });
+                // <!-- 购物车 -->
+                   $(".shop_car").click(function()
+                   {
+                       $.ajax({ 
+                            url: "{{ url('check_user') }}" , 
+                            type: 'POST',
+                            data: { _token : '<?php echo csrf_token()?>'},
+                            dataType: 'json', 
+                            success: function(data){ 
+                                console.log(data);
+                                if(data.code==0)
+                                {
+                                   alert("请先登录");
+                                   // window.location.href = "http://www.jb51.net";
+                                }
+                                //跳转购物车列表
+                                 if(data.code==1)
+                                {
+                                    var url = "car_show";//此处可以拼接内容
+                                    window.location.href = url;
+                                }
+                                
+                            }, 
+                            error: function(xhr, type){ 
+                                alert('Ajax error!') 
+                            } 
+                        });
+                   })
+                </script>
 
                 <!--悬浮搜索框-->
 
@@ -742,6 +807,20 @@
                             setInterval('autoScroll(".demo")', 3000);
                         })
                     }
+
+                    $("#mc-menu-hd").click(function(){
+                       $.ajax({  
+                               url: "{{ url('/car_list') }}" ,  
+                               type: 'POST', 
+                               data: { _token : '<?php echo csrf_token()?>'},   
+                               dataType: 'json',  
+                               success: function(data){ 
+                                   // console.log(data);
+                                   console.log(data)
+                               },  
+                               // error: function(xhr, type){  alert('Ajax error!') } 
+                        });
+                    })
                 </script>
             </div>
             <div class="shopMainbg">
@@ -2207,9 +2286,9 @@
                             <span class="message "></span>
                         </a>
                         <p>
-                            购物车
+                            <a href="shopcart">购物车</a>
                         </p>
-                        <p class="cart_num ">0</p>
+                        <p class="cart_num "></p>
                     </div>
                     <div id="asset " class="item ">
                         <a href="# ">
