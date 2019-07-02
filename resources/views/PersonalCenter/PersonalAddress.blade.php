@@ -197,7 +197,7 @@
 
 										<div class="am-form-group">
 											<div class="am-u-sm-9 am-u-sm-push-3">
-												<button class="am-btn am-btn-danger" id="btn">保存</button>
+												<button id="btn">保存</button>
 												<button  class="am-close am-btn am-btn-danger" data-am-modal-close>取消</button>
 											</div>
 										</div>
@@ -206,7 +206,25 @@
 								<script type="text/javascript">
 									$(document).on('click','#btn',function(){
 										var address_name = $('#address_name').val();
-										alert(address_name);
+										var address_detailed = $('#address_detailed').val();
+										var address_location = $('#address_location').val();
+										var address_tel  = $('#address_tel').val();
+
+										$.ajax({
+											url:"http://127.0.0.1/big/vue/shopindex/public/api/AddAddress",
+											data:{
+													address_name:address_name,address_tel:address_tel,
+													address_detailed:address_detailed,address_location:address_location,
+													u_id:1
+												},
+											type:"get",
+											dataType:"json",
+
+											success:function(res){
+												console.log(res);
+											}
+										})
+										
 									})
 								</script>
 
