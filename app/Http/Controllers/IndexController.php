@@ -72,7 +72,8 @@ class IndexController extends Controller
     	$goodinfo=$data['data']['good'][0];
     	$attrinfo=$data['data']['attr'];
     	$imginfo=$data['data']['goodimg'];
-    	return view('good_info',['goodinfo'=>$goodinfo,'attrinfo'=>$attrinfo,'imginfo'=>$imginfo]);
+        $address=$data['data']['address'];
+    	return view('good_info',['goodinfo'=>$goodinfo,'attrinfo'=>$attrinfo,'imginfo'=>$imginfo,'address'=>$address]);
     }
     public function good_pay(Request $request){
     	$code=$request->input('code');

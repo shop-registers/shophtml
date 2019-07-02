@@ -204,7 +204,7 @@
 												<li class="td td-price">
 													<div class="item-price price-promo-promo">
 														<div class="price-content">
-															<em class="J_Price price-now" id="once_total">{{$item['order_money']}}</em>
+															<em class="J_Price price-now" id="once_total">{{$item['product_price']}}</em>
 														</div>
 													</div>
 												</li>
@@ -223,7 +223,7 @@
 											</li>
 											<li class="td td-sum">
 												<div class="td-inner">
-													<em tabindex="0" class="J_ItemSum number" id="total">{{$item['payment_money']}}</em>
+													<em tabindex="0" class="J_ItemSum number" id="total">{{$item['order_money']}}</em>
 												</div>
 											</li>
 											<li class="td td-oplist">

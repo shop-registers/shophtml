@@ -40,8 +40,5 @@ Route::get('/zhao_mi', 'ShopController@zhao_mi');
 Route::post('/get_mi', 'ShopController@get_mi');
 
 Route::get("/good_info/{id}",'IndexController@good_info');
-Route::get('/asdf',function(){
-	return view('asdf');
-});
 Route::get('/pay','IndexController@good_pay');
 Route::get('/success','IndexController@success_pay');
