@@ -180,7 +180,7 @@
 								</li>
 								<li class="price iteminfo_mktprice">
 									<dt>原价</dt>
-									<dd><em>¥</em><b class="sys_item_mktprice">{{$goodinfo['good_old_price']}}</b></dd>									
+									<dd><em>¥</em><b class="sys_item_mktprice">{{$goodinfo['good_old_price']}}.00</b></dd>									
 								</li>
 								<div class="clear"></div>
 							</div>
@@ -218,10 +218,12 @@
 												<input type="hidden" name="arrcount" id="attrcount" value="{{count($attrinfo)}}">
 												<script type="text/javascript">
 													$(function(){
+
 														var lenth=$('#attrcount').val();
 														var arr=new Array();
 														var p_id=$('.theme-signin-left').children().eq(0).attr('id');
 														$(document).on('click','.sku-line',function(){
+															var good_id=$('#good_id').val();
 															zhi=$(this).val();
 															p_class=$(this).attr('class');
 															p_name=$(this).parent().parent().attr('id');
@@ -235,7 +237,7 @@
 																newstr=str.join(',');
 																$.ajax({
 																	url:"http://localhost/cffirm/show_qian/public/api/goodattr_change",
-																	data:{str:newstr},
+																	data:{str:newstr,good_id:good_id},
 																	dataType:"json",
 																	type:"get",
 																	success:function(res){
@@ -269,7 +271,7 @@
 														<div class="cart-title number">数量</div>
 														<dd>
 															<input id="min" class="am-btn am-btn-default" name="" type="button" value="-" />
-															<input id="text_box" name="" type="text" value="1" style="width:30px;" ref="goodNum"/>
+															<input id="text_box" name="" type="text" value="1" style="width:30px;" min="1" ref="goodNum"/>
 															<input id="add" class="am-btn am-btn-default" name="" type="button" value="+" />
 															<span id="Stock" class="tb-hidden">库存<span class="stock">{{$goodinfo['good_inventory']}}</span>件</span>
 														</dd>
@@ -644,7 +646,6 @@
 													<span class="tb-tbcr-num" id="total"></span>
 												</div>
 											</li>
-
 											<li class="tb-taglist-li tb-taglist-li-1">
 												<div class="comment-info">
 													<span>好评</span>
