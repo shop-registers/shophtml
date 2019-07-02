@@ -8,6 +8,7 @@ use App\Mongodb;
 
 class IndexController extends Controller
 {
+
     //首页无限分类
     public function index()
     {
@@ -89,4 +90,5 @@ class IndexController extends Controller
         $data=json_decode($data,true);
         return view('success',$data);
     }
+
 }
