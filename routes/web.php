@@ -35,3 +35,12 @@ Route::get('/zhao_mi', 'ShopController@zhao_mi');
 
 //找回密码_获取数据
 Route::post('/get_mi', 'ShopController@get_mi');
+
+//个人信息展示
+Route::get('/person_show', 'ShopController@person_show');
+
+//个人信息修改
+Route::post('/person_upd', 'ShopController@person_upd');
+
+//我的信息
+Route::get('/news', 'ShopController@news');

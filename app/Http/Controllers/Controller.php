@@ -20,7 +20,7 @@ class Controller extends BaseController
 	    'code' => '0',
 	    'msg' => "请求成功",
 	    'data' => $data
-		]);
+		],JSON_UNESCAPED_UNICODE);
     }
 
     //请求错误返回数据
@@ -53,6 +53,29 @@ class Controller extends BaseController
 
         return $file_contents;
     }
+
+
+    public function curl_get($urls,$headers)
+    {
+        // print_r($headers);die;
+         $curl = curl_init();
+        //设置抓取的url
+        $url=$urls;                       //地址要拼接上请求参数
+
+        curl_setopt($curl, CURLOPT_URL, $url);         
+        curl_setopt($curl, CURLOPT_HEADER, 0);        //设置头文件的信息作为数据流输出
+        curl_setopt($curl, CURLOPT_RETURNTRANSFER, 0);//设置获取的信息以文件流的形式返回，而不是直接输出
+         //设置获取的信息以文件流的形式返回，而不是直接输出。
+        // curl_setopt($curl, CURLOPT_RETURNTRANSFER, 0);
+
+        curl_setopt($curl, CURLOPT_HTTPHEADER, $headers);
+        $data = curl_exec($curl);                     //执行命令
+        curl_close($curl);                            //关闭URL请求
+        return  $data;                              //显示获得的数据
+    }
+
+    
+
 
     //$email 是要发送的邮件号，即接收方
 

@@ -154,9 +154,10 @@
 			        		if(arr.code == '0')
 			        		{
 			        			
-								
+								var formdata = new FormData();
 								var user_id = arr.data.user_id;
 								var token = arr.data.token;
+								formdata.append("user_id" , user_id);
 								$.ajax({
 									url:"/loginn",
 									type:"post",
@@ -167,8 +168,22 @@
 						        	success:function(data)
 						        	{
 						        	    // 获取用户信息
-						        		layer.alert('登陆成功', {icon: 1});
-						        		// window.href="";
+						        		// layer.alert('登陆成功', {icon: 1});
+						        		$.ajax({
+						        			url:"/api/birth",
+						        			type:"post",
+						        			data:{user_id:user_id},
+						        			headers: {
+								            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+								        	},
+						        			success:function(data)
+						        			{
+						        				if(data == 1)
+						        				{
+						        					alert('登录成功');
+						        				}
+						        			}
+						        		})
 						        	}
 								})
 			        		}

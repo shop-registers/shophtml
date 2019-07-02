@@ -7,14 +7,14 @@
 
 		<title>我的消息</title>
 
-		<link href="../AmazeUI-2.4.2/assets/css/admin.css" rel="stylesheet" type="text/css">
-		<link href="../AmazeUI-2.4.2/assets/css/amazeui.css" rel="stylesheet" type="text/css">
+		<link href="/cheng_js/AmazeUI-2.4.2/assets/css/admin.css" rel="stylesheet" type="text/css">
+		<link href="/cheng_js/AmazeUI-2.4.2/assets/css/amazeui.css" rel="stylesheet" type="text/css">
 
-		<link href="../css/personal.css" rel="stylesheet" type="text/css">
-		<link href="../css/newstyle.css" rel="stylesheet" type="text/css">
+		<link href="/cheng_js/css/personal.css" rel="stylesheet" type="text/css">
+		<link href="/cheng_js/css/newstyle.css" rel="stylesheet" type="text/css">
 
-		<script src="../AmazeUI-2.4.2/assets/js/jquery.min.js"></script>
-		<script src="../AmazeUI-2.4.2/assets/js/amazeui.js"></script>
+		<script src="/cheng_js/AmazeUI-2.4.2/assets/js/jquery.min.js"></script>
+		<script src="/cheng_js/AmazeUI-2.4.2/assets/js/amazeui.js"></script>
 
 	</head>
 
@@ -52,7 +52,7 @@
 
 						<div class="nav white">
 							<div class="logoBig">
-								<li><img src="../images/logobig.png" /></li>
+								<li><img src="/cheng_js/images/logobig.png" /></li>
 							</div>
 
 							<div class="search-bar pr">
@@ -100,8 +100,8 @@
 
 						<div class="am-tabs am-tabs-d2" data-am-tabs>
 							<ul class="am-avg-sm-3 am-tabs-nav am-nav am-nav-tabs">
-								<li class="am-active"><a href="#tab1">商城活动</a></li>
-								<li><a href="#tab2">物流助手</a></li>
+								<li class="am-active"><a href="#tab1">未读消息</a></li>
+								<li><a href="#tab2">已读信息</a></li>
 								<li><a href="#tab3">交易信息</a></li>
 
 							</ul>
@@ -111,7 +111,7 @@
 
 									<div class="news-day">
 										<div class="goods-date" data-date="2015-12-21">
-											<span><i class="month-lite">12</i>.<i class="day-lite">21</i>	<i class="date-desc">今天</i></span>
+											<span><i class="month-lite">12</i>.<i class="day-lite">21</i>	<i class="date-desc">1</i></span>
 										</div>
 
 										<!--消息 -->
@@ -120,7 +120,7 @@
 											<div class="s-msg-content i-msg-downup-wrap">
 												<div class="i-msg-downup-con">
 													<a class="i-markRead" target="_blank" href="blog.html">
-														<img src="../images/TB102.jpg">
+														<img src="/cheng_js/images/TB102.jpg">
 														<p class="s-main-content">
 															最特色的湖北年货都在这儿 ~快来囤年货啦！
 														</p>
@@ -139,6 +139,7 @@
 
 								<div class="am-tab-panel am-fade" id="tab2">
 									<!--消息 -->
+									
 										<div class="s-msg-item s-msg-temp i-msg-downup">
 											<h6 class="s-msg-bar"><span class="s-name">订单已签收</span></h6>
 											<div class="s-msg-content i-msg-downup-wrap">
@@ -146,7 +147,7 @@
 													<a class="i-markRead" target="_blank" href="logistics.html">
 													<div class="m-item">	
 														<div class="item-pic">															
-																	<img src="../images/kouhong.jpg_80x80.jpg" class="itempic J_ItemImg">
+																	<img src="/cheng_js/images/kouhong.jpg_80x80.jpg" class="itempic J_ItemImg">
 														</div>
 														<div class="item-info">
 															您购买的美康粉黛醉美唇膏已签收，
@@ -174,7 +175,7 @@
 													<a class="i-markRead" target="_blank" href="record.html">
 													<div class="m-item">	
 														<div class="item-pic">															
-																	<img src="../images/kouhong.jpg_80x80.jpg" class="itempic J_ItemImg">
+																	<img src="/cheng_js/images/kouhong.jpg_80x80.jpg" class="itempic J_ItemImg">
 														</div>
 														<div class="item-info">
 															<p class="item-comment">您购买的美康粉黛醉美唇膏卖家已退款</p>
@@ -262,6 +263,8 @@
 					</li>
 
 				</ul>
+				<input type="hidden" name="id" value="{{$user_id}}">
+				<input type="hidden" name="token" value="{{$token}}">
 
 			</aside>
 		</div>
@@ -269,3 +272,21 @@
 	</body>
 
 </html>
+<script src="/cheng_js/jquery.js"></script>
+<script src="/layer/layer.js"></script>
+<script type="text/javascript">
+	$(this).ready(function(){
+		var user_id = $("[name = 'id']").val();
+		var token = $("[name = 'token']").val();
+		// alert(user_id);return;
+		$.ajax({
+			url:"api/wo_unread_news/"+user_id,
+			type:"get",
+			headers:{'Content-Type':'application/json;charset=utf8','token':token},
+			success:function(data)
+			{
+				alert(data);
+			}
+		})
+	})
+</script>

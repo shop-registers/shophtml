@@ -8,6 +8,7 @@ use App\Models\User;
 use App\Models\Users_token;
 use App\Models\Shop_admin_comment;
 use Illuminate\Support\Facades\Cache;
+use Illuminate\Support\Facades\Storage;
 // use cache;
 class ShopApiController extends Controller
 {
@@ -117,6 +118,31 @@ class ShopApiController extends Controller
         
     }
 
+
+    //发送生日祝福
+    public function birth(Request $request)
+    {
+       $id =  $request->post('user_id');
+       $user = User::where('id',$id)->first();
+       $name = $user['name'];
+       $email = $user['email'];
+       $birth = $user['birth'];
+       $births = date('m-d H:i');
+       $time = date('m-d H:i',time());
+       // print_r($births);die;
+       // echo $births."<br>".$time;die;
+       // if($births == $time)
+       // {
+       //      return $this->sendMail($emial,"亲爱的：".$name."恭喜！今天是你的生日祝你天天开心! "); 
+       //      echo 1;die;
+       // }
+       // else
+       // {
+       //      echo 1;die;
+       // }
+       echo 1;die;
+    }
+
     //用户名发送邮箱
     public function reset_pwd(Request $request)
     {
@@ -179,36 +205,71 @@ class ShopApiController extends Controller
             return $this->error('1006','没有用户id');
         }
         $data = User::where('id',$id)->first()->toArray();
-        return $this->success($data);
+        $datas[] = $data;
+        // print_r($datas);
+        foreach ($datas as $key => $v) {
+            // print_r($v['id']);die;
+            $arr = [
+                'id'=>$v['id'],
+                'sex'=>$v['sex'],
+                'name'=>$v['name'],
+                'pwd'=>$v['pwd'],
+                'email'=>$v['email'],
+                'last_time'=>$v['last_time'],
+                'image'=>$v['image'],
+                'birth'=>date('Y-m-d',$v['birth']),
+                'tel'=>$v['tel']
+            ];
+        }
+        // print_r($arr);die;
+        return $this->success($arr);
+    }
+
+    //图片
+    public function image(Request $request)
+    {
+
+        $id = $request->post('id');
+        $img = $request->file('image');
+        // 获取后缀名
+        $ext = $img->extension();
+        // 新文件名
+        $saveName =time().rand().".".$ext;
+        $path = $img->store(date('Ymd'));
+        $image = "http://www.shop.com/uploads/".$path;
+        $data = User::where('id',$id)->update(['image'=>$image]);
+        if($data)
+        {
+            echo 1;die;
+        }
+       
     }
 
     //修改查询个人信息
-    public function up_personal(Request $request)
-    {
-        $id = $request->route('id');
-        $data = User::where('id',$id)->first()->toArray();
-        return $this->success($data);
-    }
+    // public function up_personal(Request $request)
+    // {
+    //     $id = $request->route('id');
+    //     $data = User::where('id',$id)->first()->toArray();
+    //     return $this->success($data);
+    // }
 
     //修改用户信息
+    //up_personal
     public function ups_personal(Request $request)
     {
-        $data = $request->all();
-        $id = $data['id'];
+        $data = $request->input();
+        $id = $data['ids'];
          $rules=[
             'name'=>'required|alpha_dash|between:2,30',
-            'pwd'=>'required|between:6,30',
-            'email'=>'unique:users,email|required|email',
+            'email'=>'required|email',
         ];
         $message=[
-            'name.required'=>'名字不能为空',
-            'name.between'=>'最少两个汉子',
-            'name.alpha_dash'=>'必须汉子',
-            'pwd.required'=>'密码不能为空',
-            'pwd.between'=>'密码最少6位字符最多30个字符',
+            'name.required'=>'名称不能为空',
+            'name.between'=>'名称最少两个汉子',
+            'name.alpha_dash'=>'名称必须汉子',
             'email.required'=>'邮箱不能为空',
             'email.email'=>'邮箱格式不正确',
-            'email.unique'=>'邮箱不能重复注册',
+            // 'email.unique'=>'邮箱不能重复注册',
         ];
         $validator=Validator::make($data,$rules,$message);
         if(!$validator->passes()){
@@ -216,11 +277,19 @@ class ShopApiController extends Controller
             $validatorErrs = $validator->errors()->first();
             return $this->error('001',$validatorErrs);
         }
-        $arr = ['name'=>$data['name'],'pwd'=>$data['pwd'],'email'=>$data['email'],'image'=>$data['image'],'sex'=>$data['sex'],'birth'=>$data['birth']];
+        $birth = $data['birth'];
+        $births = strtotime($birth);
+        // print_r($births);die;
+        $arr = ['name'=>$data['name'],'email'=>$data['email'],'sex'=>$data['sex'],'birth'=>$births,'tel'=>$data['tel']];
         $res = User::where('id',$id)->update($arr);
+        print_r($res);die;
         if($res)
         {
             return $this->success('修改成功');
+        }
+        else
+        {
+            return $this->error('1000','不能重复修改');
         }
     }
 
@@ -235,6 +304,8 @@ class ShopApiController extends Controller
         $res = Shop_admin_comment::select('userid','objectid','addtime','content','username','parentid')->where(['status'=>'0','userid'=>$id])->get();
             return $this->success($res);
     }
+
+
 
     //我的已读消息
     public function wo_news(Request $request)

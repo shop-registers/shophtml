@@ -160,8 +160,6 @@
 					layer.msg('名字不能重复');
 				}
 
-				
-
 				if(obj.code == 0)
 				{
 					layer.alert('添加成功', {icon: 1});
