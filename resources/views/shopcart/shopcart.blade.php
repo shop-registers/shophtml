@@ -156,7 +156,7 @@
 											<div class="item-amount ">
 												<div class="sl">
 													<input class="am-btn car_add_min"  name="" type="button" value="-" />
-													<input class="text_box" type="text" value="{{$sort->goods_number}}" style="width:30px;" />
+													<input class="text_box" id="good_number" type="text" value="{{$sort->goods_number}}" style="width:30px;" />
 													<input class="am-btn car_add_min" name="" type="button" value="+" />
 												</div>
 											</div>
@@ -314,6 +314,7 @@
 <script>
 arr_price=new Array();
 arr_good_id=new Array();
+arr_good_number=new Array();
 // 修改购物车中商品的数量
 $(".car_add_min").click(function()
 {
@@ -361,8 +362,10 @@ $(".check").click(function()
 	{
 		var price=parseFloat($(this).parents('li').siblings('#price_row').children().children().text());
         var sum=parseFloat($("#J_Total").text());
-        var num=parseFloat($("#J_SelectedItemsCount").text());
+        var num=parseFloat($("#J_SelectedItemsCount").text());   //计算已选商品件数
         var good_id=$(this).parents('.bundle-main').siblings(".good_id").val();
+        var good_number=$(this).parents('li').siblings(".td-amount").children().children().children().children('.text_box').val();  //某一个商品的件数
+        arr_good_number.push(good_number);
         arr_good_id.push(good_id);
         arr_price.push(price);   //追加商品小计
         sum+=price;
@@ -371,8 +374,10 @@ $(".check").click(function()
 	else if(isChecked==false){
 		var price=parseFloat($(this).parents('li').siblings('#price_row').children().children().text());
         var sum=parseFloat($("#J_Total").text());
-        var num=parseFloat($("#J_SelectedItemsCount").text());
+        var num=parseFloat($("#J_SelectedItemsCount").text());   //计算已选商品件数
         var good_id=$(this).parents('.bundle-main').siblings(".good_id").val();
+        var good_number=$(this).parents('li').siblings(".td-amount").children().children().children().children('.text_box').val();  //某一个商品的件数
+        arr_good_number.pop(good_number);
         arr_good_id.pop(good_id);
         arr_price.pop(price);   //删除商品小计
         sum-=price;
@@ -403,20 +408,19 @@ $(".check-all").click(function(){
 
 //结算
 $("#J_Go").click(function(){
-    var allPrice=$("#J_Total").text();
+    var allPrice=$("#J_Total").text();                  //商品结算总金额
     if(allPrice=='0:00' || allPrice=='0')
     {
         alert("还没有选择宝贝，无法结算");die
     }
-
+    //ajax提交添加订单
     $.ajax({ 
-                url: "{{ url('add_order') }}" , 
+                url: "{{ url('add_order') }}",
                 type: 'POST',
-                data: { _token : '<?php echo csrf_token()?>',allPrice:allPrice,arr_price:arr_price,arr_good_id:arr_good_id},
+                data: { _token : '<?php echo csrf_token()?>',allPrice:allPrice,arr_price:arr_price,arr_good_id:arr_good_id,arr_good_number:arr_good_number},
                 dataType: 'json', 
                 success: function(data){ 
-                    console.log(data);
-                    
+                    console.log(data);   
                 }, 
                 error: function(xhr, type){ 
                     alert('Ajax error!') 
