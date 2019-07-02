@@ -145,13 +145,13 @@
 							</script>
 
 							<div class="tb-booth tb-pic tb-s310">
-								<a href="../images/01.jpg"><img src="../uploads/{{$goodinfo['good_img']}}" alt="细节展示放大镜特效" rel="../uploads/{{$goodinfo['good_img']}}" class="jqzoom" /></a>
+								<a href="../images/01.jpg"><img src="{{$goodinfo['good_img']}}" alt="细节展示放大镜特效" rel="{{$goodinfo['good_img']}}" class="jqzoom" /></a>
 							</div>
 							<ul class="tb-thumb" id="thumblist">
 								@foreach($imginfo as $item)
 								<li class="tb-selected">
 									<div class="tb-pic tb-s40">
-										<a href="#"><img src="../uploads/{{$item['img_src']}}" mid="../uploads/{{$item['img_src']}}" big="../uploads/{{$item['img_src']}}"></a>
+										<a href="#"><img src="{{$item['img_src']}}" mid="{{$item['img_src']}}" big="{{$item['img_src']}}"></a>
 									</div>
 								</li>
 								@endforeach
@@ -258,7 +258,7 @@
 																str=Object.values(arr);
 																newstr=str.join(',');
 																$.ajax({
-																	url:"http://localhost/cffirm/show_qian/public/api/goodattr_change",
+																	url:"http://www.hhh.com/api/goodattr_change",
 																	data:{str:newstr},
 																	dataType:"json",
 																	type:"get",
@@ -381,7 +381,7 @@
 							var good_price=$('#good_price').text();
 							var text_box=$('#text_box').val();
 							$.ajax({
-								url:"http://localhost/cffirm/show_qian/public/api/add_shopcart",
+								url:"http://www.hhh.com/api/add_shopcart",
 								data:{
 									'_token':'{{csrf_token()}}',
 									'good_id':good_id,
@@ -416,7 +416,7 @@
 							var good_price=$('#good_price').text();
 							var text_box=$('#text_box').val();
 							$.ajax({
-								url:"http://localhost/cffirm/show_qian/public/api/add_order",
+								url:"http://www.hhh.com/api/add_order",
 								data:{
 									'_token':'{{csrf_token()}}',
 									'good_id':good_id,

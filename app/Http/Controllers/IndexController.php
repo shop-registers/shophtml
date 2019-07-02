@@ -66,7 +66,7 @@ class IndexController extends Controller
 		}else{
 			echo "失败";
 		}die;*/
-    	$url="http://localhost/cffirm/show_qian/public/api/good_onceinfo?good_id=".$id;
+    	$url="http://www.hhh.com/api/good_onceinfo/".$id;
     	$data=file_get_contents($url);
     	$data=json_decode($data,true);
     	$goodinfo=$data['data']['good'][0];
@@ -76,14 +76,14 @@ class IndexController extends Controller
     }
     public function good_pay(Request $request){
     	$code=$request->input('code');
-    	$url="http://localhost/cffirm/show_qian/public/api/payorder?code=".$code;
+    	$url="http://www.hhh.com/api/payorder?code=".$code;
     	$data=file_get_contents($url);
     	$data=json_decode($data,true);
     	return view('pay',['data'=>$data['data']]);
     }
     public function success_pay(Request $request){
         $code=$request->input('code');
-        $url="http://localhost/cffirm/show_qian/public/api/get_success?code=".$code;
+        $url="http://www.hhh.com/api/get_success?code=".$code;
         $data=file_get_contents($url);
         $data=json_decode($data,true);
         return view('success',$data);
