@@ -608,7 +608,7 @@
 										</div>
 										<div class="twlistNews">
 											@foreach($imginfo as $item)
-												<img src="../uploads/{{$item['img_src']}}"  width="790px" height="521px" />
+												<img src="{{$item['img_src']}}"  width="790px" height="521px" />
 											@endforeach
 										</div>
 									</div>

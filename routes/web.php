@@ -43,7 +43,6 @@ Route::get("/good_info/{id}",'IndexController@good_info');
 Route::get('/pay','IndexController@good_pay');
 Route::get('/success','IndexController@success_pay');
 
-Route::any('/', 'IndexController@index');
 //购物车列表
 Route::post('/check_user', 'Shopping_CartController@check_user');          //检测用户是否登录接口
 
