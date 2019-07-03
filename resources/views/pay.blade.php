@@ -82,7 +82,11 @@
 					</form>
 				</div>
 			</div>
-
+			@if($data==40017)
+			<h1 style="margin-left:45%; font-size: 30px;">订单已支付，请勿重复提交</h1>
+			@elseif($data==40018)
+			<h1 style="margin-left:45%; font-size: 30px;">订单已过期，请重新添加</h1>
+			@else
 			<div class="clear"></div>
 			<div class="concent">
 				<!--地址 -->
@@ -345,9 +349,9 @@
 										   duration:3000,
 										   mask:true,
 										   success:function (res) {
-										       console.warn(JSON.stringify(res));return;
+										       console.warn(JSON.stringify(res));
 										   }
-										});
+										});return;
 									}
 									var shipping_user=$('.buy-user').html();
 									var shipping_tel=$('.buy-phone').html();
@@ -478,6 +482,7 @@
 						<div class="clear"></div>
 					</div>
 				</div>
+				@endif
 				<div class="footer">
 					<div class="footer-hd">
 						<p>

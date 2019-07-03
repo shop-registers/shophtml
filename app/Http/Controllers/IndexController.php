@@ -37,7 +37,14 @@ class IndexController extends Controller
     	$url="http://localhost/cffirm/show_qian/public/api/payorder?code=".$code;
     	$data=file_get_contents($url);
     	$data=json_decode($data,true);
-    	return view('pay',['data'=>$data['data']]);
+        if($data['code']==40017){
+            return view('pay',['data'=>40017]);
+        }elseif($data['code']==40018){
+            return view('pay',['data'=>40018]);
+        }else{
+            return view('pay',['data'=>$data['data']]);    
+        }
+    	
     }
     public function success_pay(Request $request){
         $code=$request->input('code');
