@@ -202,7 +202,7 @@
 
 											$.ajax({
 												url:"http://127.0.0.1/big/vue/shopindex/public/api/FullOrder",
-												data:{customer_id:1},
+												data:{customer_name:1},
 												type:'get',
 												dataType:"json",
 							
@@ -223,7 +223,7 @@
 													{
 							str +="<div class='order-status5'>\
 												<div class='order-title'>\
-													<div class='dd-num'>订单编号：<a href='javascript:;'>"+res.data[i].order_sn+"</a></div>\
+													<div class='dd-num'>订单编号：<a href='javascript:;'>"+res.data[i].child_order_sn+"</a></div>\
 													<span>成交时间："+res.data[i].create_time+"</span>\
 												</div>\
 												<div class='order-content'>\
@@ -232,13 +232,13 @@
 															<li class='td td-item'>\
 																<div class='item-pic'>\
 																	<a href='#' class='J_MakePoint'>\
-																		<img src='../images/kouhong.jpg_80x80.jpg' class='itempic J_ItemImg'>\
+																		<img src='"+res.data[i].good_img+"' class='itempic J_ItemImg'>\
 																	</a>\
 																</div>\
 																<div class='item-info'>\
 																	<div class='item-basic-info'>\
 																		<a href='#'>\
-																			<p>"+res.data[i].customer_name+"</p>\
+																			<p>"+res.data[i].good_name+"</p>\
 																			<p class='info-little'>颜色：12#川南玛瑙\
 																				<br/>包装：裸装 </p>\
 																		</a>\
@@ -247,12 +247,12 @@
 															</li>\
 															<li class='td td-price'>\
 																<div class='item-price'>\
-																	"+res.data[i].order_money+"\
+																	"+res.data[i].product_price+"\
 																</div>\
 															</li>\
 															<li class='td td-number'>\
 																<div class='item-number'>\
-																	<span>×</span>2\
+																	<span>×</span>"+res.data[i].product_cnt+"\
 																</div>\
 															</li>\
 															<li class='td td-operation'>\
@@ -373,7 +373,7 @@
 
 											$.ajax({
 												url:"http://127.0.0.1/big/vue/shopindex/public/api/PaidOrder",
-												data:{customer_id:1},
+												data:{customer_name:1},
 												type:'get',
 												dataType:"json",
 							
@@ -394,7 +394,7 @@
 													{
 							str +="<div class='order-status1'>\
 												<div class='order-title'>\
-													<div class='dd-num'>订单编号：<a href='javascript:;'>"+res.data[i].order_sn+"</a></div>\
+													<div class='dd-num'>订单编号：<a href='javascript:;'>"+res.data[i].child_order_sn+"</a></div>\
 													<span>成交时间："+res.data[i].create_time+"</span>\
 												</div>\
 												<div class='order-content'>\
@@ -403,13 +403,13 @@
 															<li class='td td-item'>\
 																<div class='item-pic'>\
 																	<a href='#' class='J_MakePoint'>\
-																		<img src='../images/kouhong.jpg_80x80.jpg' class='itempic J_ItemImg'>\
+																		<img src='"+res.data[i].good_img+"' class='itempic J_ItemImg'>\
 																	</a>\
 																</div>\
 																<div class='item-info'>\
 																	<div class='item-basic-info'>\
 																		<a href='#'>\
-																			<p>"+res.data[i].customer_name+"</p>\
+																			<p>"+res.data[i].good_name+"</p>\
 																			<p class='info-little'>颜色：12#川南玛瑙\
 																				<br/>包装：裸装 </p>\
 																		</a>\
@@ -418,12 +418,12 @@
 															</li>\
 															<li class='td td-price'>\
 																<div class='item-price'>\
-																	"+res.data[i].order_money+"\
+																	"+res.data[i].product_price+"\
 																</div>\
 															</li>\
 															<li class='td td-number'>\
 																<div class='item-number'>\
-																	<span>×</span>2\
+																	<span>×</span>"+res.data[i].product_cnt+"\
 																</div>\
 															</li>\
 															<li class='td td-operation'>\
@@ -546,7 +546,7 @@
 
 											$.ajax({
 												url:"http://127.0.0.1/big/vue/shopindex/public/api/PaidOrder",
-												data:{customer_id:1},
+												data:{customer_name:1},
 												type:'get',
 												dataType:"json",
 							
@@ -567,7 +567,7 @@
 													{
 							str +="<div class='order-status3'>\
 												<div class='order-title'>\
-													<div class='dd-num'>订单编号：<a href='javascript:;'>"+res.data[i].order_sn+"</a></div>\
+													<div class='dd-num'>订单编号：<a href='javascript:;'>"+res.data[i].child_order_sn+"</a></div>\
 													<span>成交时间："+res.data[i].create_time+"</span>\
 												</div>\
 												<div class='order-content'>\
@@ -576,13 +576,13 @@
 															<li class='td td-item'>\
 																<div class='item-pic'>\
 																	<a href='#' class='J_MakePoint'>\
-																		<img src='../images/kouhong.jpg_80x80.jpg' class='itempic J_ItemImg'>\
+																		<img src='"+res.data[i].good_img+"' class='itempic J_ItemImg'>\
 																	</a>\
 																</div>\
 																<div class='item-info'>\
 																	<div class='item-basic-info'>\
 																		<a href='#'>\
-																			<p>"+res.data[i].customer_name+"</p>\
+																			<p>"+res.data[i].good_name+"</p>\
 																			<p class='info-little'>颜色：12#川南玛瑙\
 																				<br/>包装：裸装 </p>\
 																		</a>\
@@ -591,12 +591,12 @@
 															</li>\
 															<li class='td td-price'>\
 																<div class='item-price'>\
-																	"+res.data[i].order_money+"\
+																	"+res.data[i].product_price+"\
 																</div>\
 															</li>\
 															<li class='td td-number'>\
 																<div class='item-number'>\
-																	<span>×</span>2\
+																	<span>×</span>"+res.data[i].product_cnt+"\
 																</div>\
 															</li>\
 															<li class='td td-operation'>\
@@ -721,7 +721,7 @@
 
 											$.ajax({
 												url:"http://127.0.0.1/big/vue/shopindex/public/api/PaidOrder",
-												data:{customer_id:1},
+												data:{customer_name:1},
 												type:'get',
 												dataType:"json",
 							
@@ -742,7 +742,7 @@
 													{
 							str +="<div class='order-status4'>\
 												<div class='order-title'>\
-													<div class='dd-num'>订单编号：<a href='javascript:;'>"+res.data[i].order_sn+"</a></div>\
+													<div class='dd-num'>订单编号：<a href='javascript:;'>"+res.data[i].child_order_sn+"</a></div>\
 													<span>成交时间："+res.data[i].create_time+"</span>\
 												</div>\
 												<div class='order-content'>\
@@ -751,13 +751,13 @@
 															<li class='td td-item'>\
 																<div class='item-pic'>\
 																	<a href='#' class='J_MakePoint'>\
-																		<img src='../images/kouhong.jpg_80x80.jpg' class='itempic J_ItemImg'>\
+																		<img src='"+res.data[i].good_img+"' class='itempic J_ItemImg'>\
 																	</a>\
 																</div>\
 																<div class='item-info'>\
 																	<div class='item-basic-info'>\
 																		<a href='#'>\
-																			<p>"+res.data[i].customer_name+"</p>\
+																			<p>"+res.data[i].good_name+"</p>\
 																			<p class='info-little'>颜色：12#川南玛瑙\
 																				<br/>包装：裸装 </p>\
 																		</a>\
@@ -766,12 +766,12 @@
 															</li>\
 															<li class='td td-price'>\
 																<div class='item-price'>\
-																	"+res.data[i].order_money+"\
+																	"+res.data[i].product_price+"\
 																</div>\
 															</li>\
 															<li class='td td-number'>\
 																<div class='item-number'>\
-																	<span>×</span>2\
+																	<span>×</span>"+res.data[i].product_cnt+"\
 																</div>\
 															</li>\
 															<li class='td td-operation'>\
