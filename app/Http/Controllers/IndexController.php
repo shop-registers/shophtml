@@ -10,8 +10,13 @@ class IndexController extends Controller
 {
 
     //首页无限分类
-    public function index()
+    public function index(Request $request)
     {
+        if ($request->session()->has('user')) 
+            $user = $request->session()->get('user');
+        else
+            $user = '';
+
     	// 无限分类
     	$type = Cache::remember('type',120,function(){
     		$str = file_get_contents('http://www.hhh.com/api/goodstype');
@@ -48,7 +53,7 @@ class IndexController extends Controller
             return json_decode($str,true);
         });
     	//print_r($img);die;
-    	return view('index',['data'=>$type,'data1'=>$data1,'data2'=>$data2,'data3'=>$data3,'data4'=>$data4,'img'=>$img]);
+    	return view('index',['data'=>$type,'data1'=>$data1,'data2'=>$data2,'data3'=>$data3,'data4'=>$data4,'img'=>$img,'user'=>$user]);
     }
 
     public function spike(Request $request,$id=null)

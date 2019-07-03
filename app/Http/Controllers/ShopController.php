@@ -23,7 +23,7 @@ class ShopController extends Controller
     	//获取post数据
     	$data = $request->post();
     	// 请求接口获取数据
-		$url = 'http://www.shop.com/api/register'; 
+		$url = 'http://www.hhh.com/api/register'; 
 		return $this->curl($url,$data);
     }
 
@@ -38,8 +38,14 @@ class ShopController extends Controller
     public function logins(Request $request)
     {
     	$data = $request->post();
-    	$url = "www.shop.com/api/login";
-    	return $this->curl($url,$data);
+
+    	$url = "www.hhh.com/api/login";
+        $data = json_decode($this->curl($url,$data),true);
+        if($data['code'] == 0){
+            $request->session()->put('user',$data['data']['user']);
+        }
+            
+        return $data;
         // print_r($res);die;
 
     }
@@ -50,9 +56,7 @@ class ShopController extends Controller
     {
     	//获取数据存入session
     	$data = $request->post();
-    	$user_id = $data['user_id'];
-    	$token = $data['token'];
-    	$request->session()->put('user_id',$user_id);
+        
     	 // $value = $request->session()->get('user_id');
     }
 

@@ -124,68 +124,38 @@
 			        	},
 			        	success:function(data)
 			        	{
+			        		//console.log(data);return;
 			        		//转换json数据
-			        		var arr = JSON.parse(data);
+			        		//var arr = JSON.parse(data);
 			        		//验证规则
-			        		if(arr.code == '1002')
+			        		if(data.code == '1002')
 			        		{
 			        			layer.msg('参数缺失', {icon: 5});
 			        			return false;
 			        		}
 
-			        		if(arr.code == '1003')
+			        		if(data.code == '1003')
 			        		{
 			        			layer.msg('用户名、密码不正确！', {icon: 5});
 			        			return false;
 			        		}
 
-			        		if(arr.code == '1003')
+			        		if(data.code == '1003')
 			        		{
 			        			layer.msg('用户名、密码不正确！', {icon: 5});
 			        			return false;
 			        		}
 
-			        		if(arr.code == '1004')
+			        		if(data.code == '1004')
 			        		{
 			        			layer.msg('请激活您的账号！', {icon: 5});
 			        			return false;
 			        		}
 
-			        		if(arr.code == '0')
+			        		if(data.code == '0')
 			        		{
-			        			
-								var formdata = new FormData();
-								var user_id = arr.data.user_id;
-								var token = arr.data.token;
-								formdata.append("user_id" , user_id);
-								$.ajax({
-									url:"loginn",
-									type:"post",
-									data:{user_id:user_id,token:token},
-									headers: {
-						            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-						        	},
-						        	success:function(data)
-						        	{
-						        	    // 获取用户信息
-						        		// layer.alert('登陆成功', {icon: 1});
-						        		$.ajax({
-						        			url:"/api/birth",
-						        			type:"post",
-						        			data:{user_id:user_id},
-						        			headers: {
-								            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-								        	},
-						        			success:function(data)
-						        			{
-						        				if(data == 1)
-						        				{
-						        					alert('登录成功');
-						        				}
-						        			}
-						        		})
-						        	}
-								})
+			        			layer.alert('登陆成功', {icon: 3});
+						        window.location.href = 'index';
 			        		}
 
 			        	}
