@@ -27,4 +27,9 @@ class Shop_admin_comment extends Model
      */
     protected $dateFormat = 'U';
 
+    public function Shop_admin_goods()
+    {
+        return $this->hasOne('App\Models\Shop_admin_goods','id','objectid');
+    }
+
 }

@@ -154,8 +154,12 @@
 
 			        		if(data.code == '0')
 			        		{
-			        			layer.alert('登陆成功', {icon: 3});
-						        window.location.href = 'index';
+			        			layer.msg('登录成功', {
+										  icon: 1,
+										  time: 2000 //2秒关闭（如果不配置，默认是3秒）
+										}, function(){
+										  window.location.href="index";
+								});
 			        		}
 
 			        	}

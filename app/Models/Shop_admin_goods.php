@@ -4,16 +4,10 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class User extends Model
+class Shop_admin_goods extends Model
 {
-    /**
-     * 与模型关联的数据表。
-     *
-     * @var string
-     */
-    protected $primaryKey = 'id';
-
-    protected $table = 'user';
+     protected $primaryKey = 'id';
+    protected $table = 'shop_admin_goods';
 
      /**
      * 执行模型是否自动维护时间戳.
@@ -27,5 +21,4 @@ class User extends Model
      * @var string
      */
     protected $dateFormat = 'U';
-
 }

@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Users_token extends Model
 {
     protected $primaryKey = 'id';
-    protected $table = 'users_token';
+    protected $table = 'shop_admin_users_token';
 
      /**
      * 执行模型是否自动维护时间戳.

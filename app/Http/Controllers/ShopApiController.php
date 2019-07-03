@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Users_token;
 use App\Models\Shop_admin_comment;
+use App\Models\Shop_admin_goods;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Storage;
 // use cache;
@@ -301,8 +302,12 @@ class ShopApiController extends Controller
         {
             $this->error('1001','必须输入用户id');
         }
-        $res = Shop_admin_comment::select('userid','objectid','addtime','content','username','parentid')->where(['status'=>'0','userid'=>$id])->get();
-            return $this->success($res);
+        // $res = Shop_admin_comment::select('userid','objectid','addtime','content','username','parentid')->where(['status'=>'0','userid'=>$id])->get();
+        //     return $this->success($res);
+        $res = Shop_admin_comment::with('Shop_admin_goods')->where(['userid'=>$id])->orderBy('status', 'asc')->get()->toArray();
+        // dd($res);
+        return $this->success($res);
+        // print_r($res);die;
     }
 
 
@@ -325,5 +330,21 @@ class ShopApiController extends Controller
         $id = $request->route('id');
         $data = User::select('name','id','integral')->where(['id'=>$id])->first()->toArray();
         return $this->success($data);
+    }
+
+
+    //未读的信息
+    public function news(Request $request)
+    {
+       $id = $request->route('id');
+       $res = Shop_admin_comment::where('id',$id)->update(['status'=>'1']);
+       if($res)
+       {
+            return 1;die;
+       }
+       else
+       {
+            return 2;die;
+       }
     }
 }
