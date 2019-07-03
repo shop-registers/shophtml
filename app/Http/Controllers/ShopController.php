@@ -3,7 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use App\Models\User;
+use Illuminate\Support\Facades\Cache;
 class ShopController extends Controller
 {
     //添加用户
@@ -39,16 +40,7 @@ class ShopController extends Controller
     	$data = $request->post();
     	$url = "www.shop.com/api/login";
     	return $this->curl($url,$data);
-
-    	// 判断邮箱登录还是用户名登录
-  		//$pattern="/\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*/";
-		// if(preg_match($pattern,$name)){
-		//     // echo '邮箱验证通过！';
-		//     return 1;die;
-		// } else{
-		//     // echo '邮箱格式错误！';
-		//     return 2;die;
-		// }
+        // print_r($res);die;
 
     }
 
@@ -60,7 +52,6 @@ class ShopController extends Controller
     	$data = $request->post();
     	$user_id = $data['user_id'];
     	$token = $data['token'];
-    	// print_r($data);die;
     	$request->session()->put('user_id',$user_id);
     	 // $value = $request->session()->get('user_id');
     }
@@ -80,4 +71,41 @@ class ShopController extends Controller
     	$url = "www.shop.com/api/reset_pwd";
  		return $this->curl($url,$data);
     }
+
+
+    // 个人信息展示
+    public function person_show(Request $request)
+    {
+        // 获取缓存数据
+        $user_id = $request->session()->get('user_id');
+        if($request->session()->has('user_id'))
+        {
+            $token = Cache::get('key');
+            return view('person/information',['user_id'=>$user_id,'token'=>$token]);
+        }
+        else
+        {
+            echo "<script>alert('请先登录');windows:location.href='http://www.shop.com/login'</script>";
+        }
+        
+    }
+
+
+
+    // 未读信息
+    public function news(Request $request)
+    {
+        $user_id = $request->session()->get('user_id');
+        $token = Cache::get('key');
+        if($request->session()->has('user_id'))
+        {
+            return view('/person/news',['user_id'=>$user_id,'token'=>$token]);
+        }
+        else
+        {
+            echo "<script>alert('请先登录');windows:location.href='http://www.shop.com/login'</script>";
+        }
+        
+    }
+
 }

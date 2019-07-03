@@ -26,6 +26,9 @@ Route::get('/verifcation/{token}','ShopApiController@verifcation');
 //登录接口
 Route::post('/login','ShopApiController@login');
 
+//发送生日祝福
+Route::post('/birth','ShopApiController@birth');
+
 //用户名发送密码
 Route::post('/reset_pwd','ShopApiController@reset_pwd');
 
@@ -35,11 +38,14 @@ Route::get('/up_pwd/{id}','ShopApiController@up_pwd')->middleware('token');
 //个人信息展示
 Route::get('/personal_is_show/{id}','ShopApiController@personal_is_show')->middleware('token');
 
+//个人图片信息
+Route::post('/image','ShopApiController@image');
+
 //修改查询个人信息
-Route::get('/up_personal/{id}','ShopApiController@up_personal')->middleware('token');
+Route::post('/up_personal','ShopApiController@up_personal')->middleware('token');
 
 //修改个人信息
-Route::post('/ups_personal','ShopApiController@ups_personal')->middleware('token');
+Route::get('/ups_personal','ShopApiController@ups_personal')->middleware('token');
 
 //我的未读消息接口
 Route::get('/wo_unread_news/{id}','ShopApiController@wo_unread_news')->middleware('token');

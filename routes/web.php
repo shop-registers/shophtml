@@ -39,6 +39,7 @@ Route::get('/zhao_mi', 'ShopController@zhao_mi');
 //找回密码_获取数据
 Route::post('/get_mi', 'ShopController@get_mi');
 
+
 Route::get("/good_info/{id}",'IndexController@good_info');
 Route::get('/pay','IndexController@good_pay');
 Route::get('/success','IndexController@success_pay');
@@ -57,3 +58,13 @@ Route::any('/add_order', 'Shopping_CartController@add_order');               //�
 Route::any('/collection_list', 'CollectionsController@collections_list');   //我的收藏列表
 
 Route::any('/collections_del', 'CollectionsController@collections_del');    //取消收藏
+
+//个人信息展示
+Route::get('/person_show', 'ShopController@person_show');
+
+//个人信息修改
+Route::post('/person_upd', 'ShopController@person_upd');
+
+//我的信息
+Route::get('/news', 'ShopController@news');
+
