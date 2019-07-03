@@ -4,10 +4,10 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Users_token extends Model
+class Shop_admin_goods extends Model
 {
-    protected $primaryKey = 'id';
-    protected $table = 'shop_admin_users_token';
+     protected $primaryKey = 'id';
+    protected $table = 'shop_admin_goods';
 
      /**
      * 执行模型是否自动维护时间戳.
@@ -21,5 +21,4 @@ class Users_token extends Model
      * @var string
      */
     protected $dateFormat = 'U';
-
 }

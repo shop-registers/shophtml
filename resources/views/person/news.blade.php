@@ -13,6 +13,9 @@
 		<link href="/cheng_js/css/personal.css" rel="stylesheet" type="text/css">
 		<link href="/cheng_js/css/newstyle.css" rel="stylesheet" type="text/css">
 
+		<script src="https://cdn.staticfile.org/vue/2.4.2/vue.min.js"></script>
+		<script src="https://cdn.staticfile.org/axios/0.18.0/axios.min.js"></script>
+
 		<script src="/cheng_js/AmazeUI-2.4.2/assets/js/jquery.min.js"></script>
 		<script src="/cheng_js/AmazeUI-2.4.2/assets/js/amazeui.js"></script>
 
@@ -101,8 +104,8 @@
 						<div class="am-tabs am-tabs-d2" data-am-tabs>
 							<ul class="am-avg-sm-3 am-tabs-nav am-nav am-nav-tabs">
 								<li class="am-active"><a href="#tab1">未读消息</a></li>
-								<li><a href="#tab2">已读信息</a></li>
-								<li><a href="#tab3">交易信息</a></li>
+								<!-- <li><a href="#tab2">已读信息</a></li> -->
+								<!-- <li><a href="#tab3">交易信息</a></li> -->
 
 							</ul>
 
@@ -111,32 +114,16 @@
 
 									<div class="news-day">
 										<div class="goods-date" data-date="2015-12-21">
-											<span><i class="month-lite">12</i>.<i class="day-lite">21</i>	<i class="date-desc">1</i></span>
+											<span><i class="month-lite"></i><i class="day-lite"></i>	<i class="date-desc">您有<i id="count" style="color: red;"></i>条未读信息 </i></span>
 										</div>
 
 										<!--消息 -->
-										<div class="s-msg-item s-msg-temp i-msg-downup">
-											<h6 class="s-msg-bar"><span class="s-name">每日新鲜事</span></h6>
-											<div class="s-msg-content i-msg-downup-wrap">
-												<div class="i-msg-downup-con">
-													<a class="i-markRead" target="_blank" href="blog.html">
-														<img src="/cheng_js/images/TB102.jpg">
-														<p class="s-main-content">
-															最特色的湖北年货都在这儿 ~快来囤年货啦！
-														</p>
-														<p class="s-row s-main-content">
-															<a href="blog.html">
-															阅读全文 <i class="am-icon-angle-right"></i>
-															</a>
-														</p>
-													</a>
-												</div>
-											</div>
-											<a class="i-btn-forkout" href="#"><i class="am-icon-close am-icon-fw"></i></a>
-										</div>
+
+				<div id="newss"></div>
+					
+
 									</div>
 								</div>
-
 								<div class="am-tab-panel am-fade" id="tab2">
 									<!--消息 -->
 									
@@ -174,8 +161,8 @@
 												<div class="i-msg-downup-con">
 													<a class="i-markRead" target="_blank" href="record.html">
 													<div class="m-item">	
-														<div class="item-pic">															
-																	<img src="/cheng_js/images/kouhong.jpg_80x80.jpg" class="itempic J_ItemImg">
+														<div class="item-pic">					
+															<img src="/cheng_js/images/kouhong.jpg_80x80.jpg" class="itempic J_ItemImg">
 														</div>
 														<div class="item-info">
 															<p class="item-comment">您购买的美康粉黛醉美唇膏卖家已退款</p>
@@ -273,6 +260,7 @@
 
 </html>
 <script src="/cheng_js/jquery.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.js"></script>
 <script src="/layer/layer.js"></script>
 <script type="text/javascript">
 	$(this).ready(function(){
@@ -285,8 +273,62 @@
 			headers:{'Content-Type':'application/json;charset=utf8','token':token},
 			success:function(data)
 			{
-				alert(data);
+				$("#newss").empty();
+				var div="";
+				var len = "";
+				$.each(data.data,function(key,val){ 
+					// console.log(val.status);return;
+					if(val.status == 0)
+					{
+						div+= "<div style='background:#18484;color:red;'>";
+					}
+					if(val.status == 1)
+					{
+						div+= "<div style='background:#18484;color:grey;'>";
+					}
+					div+="<div class='s-msg-item s-msg-temp i-msg-downup  dian' id='news' ids='"+val.id+"' >";
+					div+="<h6 class='s-msg-bar'><span class='s-name'>"+val.shop_admin_goods.good_name+"</span></h6>";
+					div+="<div class='s-msg-content i-msg-downup-wrap'>";
+					div+="<div class='i-msg-downup-con'>";
+					// div+="<a class='i-markRead' target='_blank'  href='#'";
+					div+="<img src='"+val.shop_admin_goods.good_img+"' style='width:100px;height:100px' />";
+					div+="<p class='s-main-content'>回复内容："+val.content+"</p>";
+					// div+="</a>";
+					div+="</div>";
+					div+="</div>";
+					div+="<a class='i-btn-forkout' href='#'><iclass='am-icon-closeam-icon-fw'></i></a>";  
+					div+="</div>";
+					div+="</div>";
+					if(val.status == 0)
+					{
+						len+=key+1;
+					}
+				})
+				$("#count").html(len.length);
+				$("#newss").html(div);
+				
 			}
 		})
 	})
+
+	$(document).on("click",".dian",function(){
+		var ids = $(this).attr('ids');
+		$.ajax({
+			url:"/api/news/"+ids,
+			type:"get",
+			success:function(data)
+			{
+				if(data == 1)
+				{
+					history.go(0);
+				}
+				if(data == 2)
+				{
+					alert('消息已读！');
+				}
+			}
+
+		})
+	})
+	
 </script>

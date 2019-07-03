@@ -168,22 +168,34 @@
 						        	success:function(data)
 						        	{
 						        	    // 获取用户信息
-						        		// layer.alert('登陆成功', {icon: 1});
-						        		$.ajax({
-						        			url:"/api/birth",
-						        			type:"post",
-						        			data:{user_id:user_id},
-						        			headers: {
-								            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-								        	},
-						        			success:function(data)
-						        			{
-						        				if(data == 1)
-						        				{
-						        					alert('登录成功');
-						        				}
-						        			}
-						        		})
+						        	    layer.msg('登录成功', {
+										  icon: 1,
+										  time: 2000 //2秒关闭（如果不配置，默认是3秒）
+										}, function(){
+										  window.location.href="http://www.shop.com/person_show";
+										}); 
+						        		// layer.alert('登陆成功', {icon: 
+						        		// 	if(1)
+						        		// 	{
+						        		// 		window.location.href="http://www.shop.com/person_show";
+						        		// 	}
+						        		// });
+						        		
+						        		// $.ajax({
+						        		// 	url:"/api/birth",
+						        		// 	type:"post",
+						        		// 	data:{user_id:user_id},
+						        		// 	headers: {
+								        //     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+								        // 	},
+						        		// 	success:function(data)
+						        		// 	{
+						        		// 		if(data == 1)
+						        		// 		{
+						        		// 			alert('登录成功');
+						        		// 		}
+						        		// 	}
+						        		// })
 						        	}
 								})
 			        		}

@@ -57,5 +57,8 @@ Route::get('/wo_news/{id}','ShopApiController@wo_news')->middleware('token');
 //我的钱包-积分
 Route::get('/integral/{id}','ShopApiController@integral')->middleware('token');
 
+//为读的信息
+Route::get('/news/{id}','ShopApiController@news');
+
 //分组
 // Route::group('/login','ShopApiController@reset_pwd');
